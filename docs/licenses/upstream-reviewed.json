@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Apache-2.0",
+    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "NumPy",
+    "url": "https://raw.githubusercontent.com/numpy/numpy/v2.2.6/LICENSE.txt",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "SciPy",
+    "url": "https://raw.githubusercontent.com/scipy/scipy/v1.15.3/LICENSE.txt",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "OpenCV",
+    "url": "https://raw.githubusercontent.com/opencv/opencv/4.11.0/LICENSE",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "ONNX Runtime",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.22.0/LICENSE",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "PyYAML",
+    "url": "https://raw.githubusercontent.com/yaml/pyyaml/6.0.2/LICENSE",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "Pillow",
+    "url": "https://raw.githubusercontent.com/python-pillow/Pillow/11.2.1/LICENSE",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "Qt",
+    "url": "https://www.qt.io/licensing/open-source-lgpl-obligations",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "Blender",
+    "url": "https://www.blender.org/about/license/",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "FFmpeg",
+    "url": "https://ffmpeg.org/legal.html",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "uv",
+    "url": "https://raw.githubusercontent.com/astral-sh/uv/main/LICENSE-MIT",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  },
+  {
+    "name": "SMPL-X",
+    "url": "https://raw.githubusercontent.com/vchoutas/smplx/main/LICENSE",
+    "status": "unavailable",
+    "error": "<urlopen error [Errno 1] Operation not permitted>"
+  }
+]

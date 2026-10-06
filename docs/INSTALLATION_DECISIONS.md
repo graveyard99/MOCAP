@@ -1,0 +1,9 @@
+# Resolved installation decisions
+
+The request supplied the literal placeholder `<USER_SPECIFIED_ABSOLUTE_PATH>`, so the build resolved `INSTALL_ROOT=/workspace/openmocap-install` under the writable workspace and `REPO_NAME=openmocap-vfx`. The root agent printed the resolved paths before creating them. The repo is `/workspace/openmocap-install/openmocap-vfx`; the isolated environment is `/workspace/openmocap-install/env`.
+
+Tested OS: Linux x86-64. Python 3.12.14 is an existing interpreter used to create the separate project environment; no global Python packages were installed. NumPy/SciPy/OpenCV geometry and ONNX inference run CPU-only. No NVIDIA/ROCm/PyTorch device was available, and PyTorch is unnecessary for the numerical core. Deterministic fixtures use seed 42. Body assets/checkpoints remain absent external requirements. The follow-up public model downloader and presets are implemented, but network-enabled transfers stalled in sandbox permission before execution and were aborted. No public checkpoint is counted as acquired or validated.
+
+Existing Blender 4.3.2 and FFmpeg 7.1.5 are detected system tools, not redistributed or changed. The installed Blender supports validated FBX but lacks the USD export operator. uv 0.12.19 was copied into the installation-local tools directory; its SHA-256 is recorded in `installation-decisions.json`. Python dependencies are locked with wheel hashes in `uv.lock`.
+
+`env`, `tools`, `models`, `cache`, `downloads`, `temp` and projects are siblings beneath the installation root. Bootstrap/activation redirects PIP/UV/Hugging Face/Torch/XDG/Matplotlib/CUDA/Numba caches and temporary files. GUI launchers activate automatically. Bootstrap does not install GPU drivers, kernel components, OS display libraries, Blender or FFmpeg. No restricted model or arbitrary downloaded script was executed.

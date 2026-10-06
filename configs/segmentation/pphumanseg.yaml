@@ -1,0 +1,15 @@
+# Official OpenCV Zoo float32 PPHumanSeg deployment configuration template.
+# Perception resolves ${INSTALL_ROOT} against the application installation root.
+# Weights are not bundled or currently downloaded. See docs/segmentation/public-model.md.
+perception:
+  segmentation_model: ${INSTALL_ROOT}/models/segmentation/human_segmentation_pphumanseg_2023mar.onnx
+  segmentation:
+    input_size: [192, 192]
+    foreground_class: 1
+    output_format: pphumanseg
+    # The publisher uses score argmax. Detect normalized score probabilities for
+    # confidence; otherwise softmax them. Mask selection remains publisher argmax.
+    logits: null
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+    threshold: 0.5

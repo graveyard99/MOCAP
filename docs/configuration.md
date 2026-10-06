@@ -1,0 +1,9 @@
+# Configuration and precedence
+
+A project has human-readable configuration, camera calibration, timestamped raw observations, override audit state, intermediates, outputs, QC and exports. Use the GUI wizard/editors for ordinary operation; the CLI is available for automation. See the generated tutorial configuration for a concrete validated schema.
+
+Precedence: explicit CLI/project edits and manual locked values, trusted imported calibration, geometric estimates, learned estimates, defaults. Locks are not implicitly relaxed by solver presets. A project change invalidates downstream artifacts. Parameters carry source/owner/control state (`LOCKED`, `BOUNDED`, `FREE`), confidence and bounds where relevant. Undefined metric scale, invalid convention, inconsistent camera IDs/resolution or malformed time mappings fail rather than generating plausible-looking geometry.
+
+Output convention is metres, +Y up, explicit world origin and calibrated floor. Time mapping is `t_world = scale * t_camera + offset`. Camera offsets/drift and moving trajectories use seconds; FPS is an output sampling choice, not a synchronization method. Body shape is shared across the take. Actor height is recorded as optional provided metadata; the current solver does not implement actor-height scale calibration. Establish metric scale through measured calibration.
+
+Presets expose reproducible triangulation settings: Preview 16 hypotheses/40 nonlinear triangulation iterations; Standard 32/80; High Quality 64/100; Maximum / Final 128/200. These are not body-fit iteration budgets: `solver.body_max_nfev` is separate and defaults to 35 in the service. Strong measured-joint displacement limits remain active. Solve range is world seconds; export FPS/range resamples rotations with Slerp and root translation continuously. Camera delivery is a JSON sidecar, not an embedded FBX camera promise.

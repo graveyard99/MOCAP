@@ -1,0 +1,17 @@
+{
+  "installation_root": "/workspace/openmocap-install",
+  "repository": "/workspace/openmocap-install/openmocap-vfx",
+  "environment": "/workspace/openmocap-install/env",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "python": "3.12.14",
+  "uv_version": "0.12.19",
+  "uv_sha256": "242e462a63f5a3c0421d68557006193ecbfb61321cba0fe8542213ac62d92563",
+  "compute": "CPU",
+  "seed": 42,
+  "body_assets": "external, absent",
+  "inference_checkpoints": "external, absent",
+  "blender": "/usr/bin/blender",
+  "ffmpeg": "/usr/bin/ffmpeg",
+  "decision": "INSTALL_ROOT was a placeholder; resolved to workspace-contained /workspace/openmocap-install before implementation."
+}

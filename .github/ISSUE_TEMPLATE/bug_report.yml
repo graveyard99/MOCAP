@@ -1,0 +1,18 @@
+name: Numerical or workflow bug
+description: Report a reproducible problem without private footage or assets.
+body:
+  - type: textarea
+    attributes:
+      label: Expected and observed result
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction, doctor and QC
+      description: Include commands or UI steps, versions, seed, camera convention and relevant residuals.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Redistributable fixture
+      description: Never attach restricted models, private footage or credentials.

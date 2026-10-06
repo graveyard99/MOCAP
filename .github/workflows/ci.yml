@@ -1,0 +1,30 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    env:
+      OPENMOCAP_INSTALL_ROOT: ${{ github.workspace }}/installation
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: installation/openmocap-vfx
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Isolated locked bootstrap
+        run: installation/openmocap-vfx/scripts/bootstrap.sh
+      - name: Lint, format and test
+        working-directory: installation/openmocap-vfx
+        run: |
+          source scripts/activate.sh
+          ruff check .
+          ruff format --check .
+          pytest -q
+      - name: CPU demo and doctor
+        working-directory: installation/openmocap-vfx
+        run: |
+          source scripts/activate.sh
+          openmocap demo --output outputs/ci-demo --cameras 3 --frames 12 --no-fbx
+          openmocap doctor --json
