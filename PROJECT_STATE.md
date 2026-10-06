@@ -39,7 +39,7 @@ The current release is **0.1.0, an engineering preview**. Its working vertical s
 | JSON/HTML QC and desktop workspaces | WORKING | Geometric/body residuals, rejection, clocks, contacts, warnings and reproducibility; tested synthetic GUI workflow. |
 | Full production desktop experience | PARTIAL | Coherent Qt application, async jobs and corrections; advanced overlays, calibration tools, VFR display, cancellation and large-data responsiveness incomplete. |
 | Manual and reproducible tutorial | WORKING | 26 numbered operator chapters, quick start and seven actual UI screenshots; tutorial is a synthetic solve, not neural/SMPL acceptance. |
-| CI | PARTIAL | Ubuntu workflow and pre-commit configuration authored; no hosted GitHub run observed. |
+| CI | PARTIAL | First hosted run passed locked bootstrap/lint/format but failed Qt collection for missing EGL. Runner runtime installation added; inspect the subsequent Actions result. Optional external-tool skips remain distinct from execution. |
 
 ## Architecture and data flow
 
@@ -165,6 +165,8 @@ Fresh handoff audit on 2026-10-06:
 | `openmocap demo --output outputs/demo --cameras 8 --frames 36` | Re-executed: 35 frames; geometric median 0.548006 px, fitted-body median 0.567471 px; NPZ/BVH and clean-reimported skinned FBX exported. FBX joint/skin errors 1.77843e-6/2.14441e-6 m. |
 | Shell syntax and isolated imports | `bash -n` passed for all four setup/launch scripts; fresh `env/bin/python -I` imported OpenMocap and all major numerical/Qt/ONNX dependencies. |
 | Source/documentation hygiene | Audited 178 tracked/new legitimate files and 64 Markdown files: no files above 5 MiB, forbidden runtime/model/media assets or credential-pattern matches; all local Markdown targets resolve. Required source/manual assets are tracked and generated/private path ignore guards passed. |
+
+Publication to `graveyard99/MOCAP` was verified on `main`: initial complete-source commit `8193f3b37875075407c3ef08a7ceca5936541abe` has the exact local tree `a9cfdb74fa17fea9ad2bc88c71acfe471bf0f37a`, including all 178 paths, file hashes and executable modes. The first hosted run [37510168321](https://github.com/graveyard99/MOCAP/actions/runs/37510168321) installed the lock and passed Ruff, then failed Qt collection for absent `libEGL.so.1`. The CI workflow now installs its required system graphics runtimes on the disposable runner; desktop OS prerequisites remain separate. Inspect subsequent Actions for the actual final result.
 
 Earlier recorded validation: 127 tests passed, then the expanded model-preparation suite passed 147 in 32.35 s. The eight-camera/36-input-frame demo samples 35 output frames; recorded geometric median/mean error were about 0.548/0.969 px, fitted-body median about 0.567 px. Deliberate outliers remain visible in maximum error/rejection diagnostics. Blender validates 24 bones, 736 weighted vertices, root translation and frames 1–35, with first/last round-trip joint/vertex errors of a few micrometres. These numbers describe the synthetic fixture only.
 

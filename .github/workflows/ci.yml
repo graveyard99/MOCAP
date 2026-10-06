@@ -13,6 +13,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install runner Qt graphics runtimes
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libegl1 libopengl0 libxkbcommon0
       - name: Isolated locked bootstrap
         run: installation/openmocap-vfx/scripts/bootstrap.sh
       - name: Lint, format and test

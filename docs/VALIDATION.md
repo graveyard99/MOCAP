@@ -17,6 +17,12 @@ of real pretrained models, footage, licensed SMPL assets or external DCC imports
 
 Earlier results below are retained as historical evidence, not substituted for the fresh handoff checks.
 
+## GitHub publication and first hosted run
+
+Published all 178 source/handoff files to [graveyard99/MOCAP](https://github.com/graveyard99/MOCAP) on `main`. Initial publication commit `8193f3b37875075407c3ef08a7ceca5936541abe` has tree `a9cfdb74fa17fea9ad2bc88c71acfe471bf0f37a`, exactly matching local snapshot `012bff214889c8406acc79768fb0a243b3ec4e80`, including file contents and executable modes. GitHub API publication was used because the cloud Git proxy was unreachable; the original cloud history is retained in the transfer bundle.
+
+The first [hosted run](https://github.com/graveyard99/MOCAP/actions/runs/37510168321) used Python 3.12.15 and successfully installed all 31 locked distributions, ran doctor, and passed lint/format. Test collection failed with `ImportError: libEGL.so.1`; the runner had no FFmpeg/Blender either. The workflow now installs `libegl1`, `libopengl0` and `libxkbcommon0` on the disposable Ubuntu runner. Bootstrap remains isolated and does not make that system change on desktops. Subsequent Actions results must be inspected before claiming hosted tests passed.
+
 ## Initial build checks
 
 - `source scripts/activate.sh`

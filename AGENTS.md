@@ -145,7 +145,7 @@ uv build --offline --out-dir "$OPENMOCAP_INSTALL_ROOT/downloads/dist" .
 
 An offline build needs cached build-backend dependencies; the cloud cache had them, but a fresh desktop may not. Report missing cache rather than silently accessing the network. The build backend pins Hatchling 1.27.0. A wheel/sdist is a Python package artifact, not a complete GPU desktop installer, portable interpreter or bundled Qt/Blender/FFmpeg/models application. Keep build output under the installation root. Dependency changes require reviewing `pyproject.toml` and `uv.lock`, licenses and actual runtime compatibility; normal installs use `uv sync --frozen`, not an unreviewed upgrade.
 
-CI is `.github/workflows/ci.yml`: Ubuntu/Python 3.12, isolated bootstrap, Ruff, tests, CPU no-FBX demo and doctor. Hosted GitHub execution has not been observed. Optional hooks use `.pre-commit-config.yaml`; installing hooks must retain project-local caches.
+CI is `.github/workflows/ci.yml`: Ubuntu/Python 3.12, isolated bootstrap, Ruff, tests, CPU no-FBX demo and doctor. Its first hosted run passed bootstrap/lint/format but failed Qt test collection because the runner lacked `libEGL.so.1`. The workflow now explicitly installs EGL/OpenGL/xkbcommon system runtimes on the disposable CI runner; bootstrap never installs these on the user's machine. Check Actions for the subsequent run's actual result. Optional hooks use `.pre-commit-config.yaml`; installing hooks must retain project-local caches.
 
 ## Assets, licensing and current external limits
 

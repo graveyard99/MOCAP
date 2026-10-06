@@ -34,7 +34,7 @@ No licensed SMPL assets or production inference checkpoints were supplied.
 | Desktop production workflow | PARTIAL | Cohesive Qt GUI, async real solve/export tests and screenshots; advanced correction/calibration tools incomplete |
 | Isolated bootstrap, activation, GUI launchers | WORKING | Idempotent frozen bootstrap, fresh-shell imports/cache-root assertions and actual offscreen GUI launcher event-loop smoke passed |
 | Operator manual for implemented preview | WORKING | 26 chapters, tutorial and seven actual screenshots; UI/selected-stage walkthrough and relative-link audit completed; unavailable tools explicitly documented |
-| CI/pre-commit | PARTIAL | Workflow/hooks authored; matching local Ruff/test commands pass, hosted GitHub execution not performed |
+| CI/pre-commit | PARTIAL | First hosted run passed lock/lint/format, then failed Qt collection for missing EGL; disposable-runner runtime setup added. Inspect subsequent Actions result; local full suite passes |
 
 Latest demonstrated result: eight asynchronous cameras, 35 output frames, 6,358 native observations;
 6,319 used, 39 rejected/flagged; geometric median reprojection 0.548 px, fitted-body median 0.567 px.
