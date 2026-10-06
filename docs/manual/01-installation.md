@@ -1,6 +1,6 @@
 # Installation
 
-This build is installed at /workspace/openmocap-install/openmocap-vfx, with its Python environment at /workspace/openmocap-install/env. Keep models, caches and temporary files beneath that installation root. The repository never needs a global pip installation.
+The original cloud build was installed at /workspace/openmocap-install/openmocap-vfx, with its Python environment at /workspace/openmocap-install/env. On your desktop choose a writable absolute installation root and clone [graveyard99/MOCAP](https://github.com/graveyard99/MOCAP) into its **openmocap-vfx** child directory. Recreate the environment locally; do not copy the cloud env. Keep models, caches and temporary files beneath the selected root. The repository never needs a global pip installation.
 
 A Linux graphical desktop is needed for ordinary operation. A headless machine can run the CLI and offscreen tests. Supported Python versions are 3.11–3.13; this build was tested with Python 3.12. CPU geometry does not require CUDA. GPU drivers, display libraries and hardware runtimes are system prerequisites; the installer does not silently replace them.
 
@@ -10,13 +10,15 @@ From the repository, bootstrap and activate the isolated environment. The instal
     source scripts/activate.sh
     openmocap doctor
 
-Launch the desktop with /workspace/openmocap-install/OpenMocap.sh, or run:
+Launch the generated OpenMocap.sh in your installation root, or run:
 
     openmocap gui
 
-The launcher uses the isolated interpreter automatically. Model files belong beneath /workspace/openmocap-install/models. Use user-owned licensed numerical NPZ body assets, not arbitrary downloaded pickle files. Compatible ONNX checkpoints are also supplied separately.
+The launcher uses the isolated interpreter automatically. Model files belong beneath your installation root's models directory. Use user-owned licensed numerical NPZ body assets, not arbitrary downloaded pickle files. Compatible ONNX checkpoints are also supplied separately.
 
 Project Health checks Python imports, write access, GPU/PyTorch visibility, FFmpeg and Blender. Blender is needed for FBX export and clean-scene re-import validation. The current machine provides /usr/bin/blender; a supported portable installation can be configured separately. Missing GPU support does not prevent the synthetic solve.
+
+Linux Qt also needs system EGL/OpenGL/xkbcommon runtimes, even for offscreen tests. The first hosted runner passed doctor but failed QtWidgets import because libEGL.so.1 was missing. Doctor's top-level package check does not yet detect that failure. A technician can verify the native Qt import with `python -c "from PySide6.QtWidgets import QApplication"` inside the isolated environment. The CI runner installs the relevant Ubuntu packages explicitly; desktop bootstrap does not make system package changes.
 
 ## GPU development and real capture validation
 

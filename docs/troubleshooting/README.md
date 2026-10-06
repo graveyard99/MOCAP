@@ -7,7 +7,7 @@
 - **Good geometry, poor fitted body:** verify joint schema, named pelvis/root, body file and actor proportions. A strong-joint displacement beyond the allowed bound fails; weakening trusted measurements to hide a bad model is not a repair.
 - **Missing licensed model:** acquire the correct family legally, put it under installation-root/models/body and select the actual numerical NPZ file. The fixture is for the tutorial only.
 - **Inference checkpoint fails:** verify its actual input normalization, output contract, joint order and license. No production whole-body checkpoint is bundled.
-- **Qt cannot launch:** interactive launch needs a display and compatible OS Qt libraries. `QT_QPA_PLATFORM=offscreen` is for tests, not normal artist viewing. Run doctor through the launcher environment.
+- **Qt cannot launch:** interactive launch needs a display and compatible OS Qt libraries. `QT_QPA_PLATFORM=offscreen` is for tests, not normal artist viewing. Linux QtWidgets needs EGL/OpenGL/xkbcommon system runtimes even offscreen. A missing `libEGL.so.1` can fail native imports despite a healthy doctor result, because doctor currently checks only top-level PySide6. Verify QtWidgets separately; see the [installation manual](../manual/01-installation.md). Desktop bootstrap does not install system libraries.
 - **FBX backend absent:** install an approved portable Blender under installation-root/tools or make an existing system Blender discoverable. No rig validation badge appears if re-import fails.
 - **Stale stage:** save, review downstream invalidation and rerun the selected stage/full solve. Expensive raw inference artifacts remain reusable when compatible.
 
